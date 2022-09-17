@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * This class analyzes the given String-Stream and handles the operations for finding anagrams in the stream.
+ * This class analyzes the given list of Strings and handles the operations for finding anagrams in the stream.
  */
 public class AnagramAnalyzer implements GeneralAnalyzer {
     private final List<String> dataList;
@@ -36,7 +36,7 @@ public class AnagramAnalyzer implements GeneralAnalyzer {
     }
 
     /**
-     * If the given dataStream is not null, this method groups the elements in the stream by using the unifyAndSortWord method and Streams.
+     * If the given dataString is not null, this method groups the elements in the list by using the unifyAndSortWord method and Streams.
      * The created map can be retrieved by calling getAnagramMap()
      */
     @Override

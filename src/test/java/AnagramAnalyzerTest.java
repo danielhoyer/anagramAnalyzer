@@ -26,7 +26,7 @@ public class AnagramAnalyzerTest {
 
     @Test
     public void analyzeDummyStringList() {
-        List<String> dummyList = Arrays.asList("one", "two", "three", "neo");
+        List<String> dummyList = Arrays.asList("neo", "two", "three", "one");
         Map<Integer, List<String>> expectedOutput = Map.of(Arrays.hashCode("eno".toCharArray()), Arrays.asList("one", "neo"),
                 Arrays.hashCode("eehrt".toCharArray()), Arrays.asList("three"), Arrays.hashCode("otw".toCharArray()), Arrays.asList("two"));
 

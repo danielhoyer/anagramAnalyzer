@@ -24,10 +24,10 @@ public class Application {
         if(args != null && args.length > 0){
             String filePath = args[0];
             try(GeneralIO fileIO = new FileIO(filePath)) {
-                List<String> dataStream = fileIO.getDataList();
+                List<String> dataList = fileIO.getDataList();
                 readTime = System.currentTimeMillis();
                 System.out.printf("Reading time: %d ms\n", readTime - startTime);
-                GeneralAnalyzer anagramAnalyzer = new AnagramAnalyzer(dataStream);
+                GeneralAnalyzer anagramAnalyzer = new AnagramAnalyzer(dataList);
                 anagramAnalyzer.analyze();
                 endTime = System.currentTimeMillis();
                 anagramAnalyzer.printResult(System.out);
