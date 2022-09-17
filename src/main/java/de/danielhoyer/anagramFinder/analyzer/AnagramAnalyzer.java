@@ -5,14 +5,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * This class analyzes the given list of Strings and handles the operations for finding anagrams in the stream.
  */
 public class AnagramAnalyzer implements GeneralAnalyzer {
     private final List<String> dataList;
-    private Map<Integer, List<String>> anagramMap;
+    private Map<Integer, List<String>> result;
 
     public AnagramAnalyzer(List<String> dataList) {
         this.dataList = dataList;
@@ -44,32 +43,15 @@ public class AnagramAnalyzer implements GeneralAnalyzer {
         if(dataList != null) {
             Map<Integer, List<String>> map = dataList.stream().parallel()
                     .collect(Collectors.groupingByConcurrent(AnagramAnalyzer::getHashcodeOfUnifiedAndSortedWord));
-            this.anagramMap = map;
+            this.result = map;
         }
     }
 
-    /**
-     * Prints the results stored in anagramMap to the specified output.
-     * @param outPrintStream the specified output (PrintStream)
-     */
-    @Override
-    public void printResult(PrintStream outPrintStream){
-        anagramMap.forEach((key, value) -> {
-            if(value.size() > 1) {
-                value.forEach(v -> {
-                    outPrintStream.print(v);
-                    outPrintStream.print(" ");
-                });
-                outPrintStream.print("\n");
-            }
-        });
+    public Map<Integer, List<String>> getResult() {
+        return result;
     }
 
-    public Map<Integer, List<String>> getAnagramMap() {
-        return anagramMap;
-    }
-
-    public void setAnagramMap(Map<Integer, List<String>> anagramMap) {
-        this.anagramMap = anagramMap;
+    public void setResult(Map<Integer, List<String>> result) {
+        this.result = result;
     }
 }

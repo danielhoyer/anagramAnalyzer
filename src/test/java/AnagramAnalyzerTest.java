@@ -8,7 +8,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,7 +31,7 @@ public class AnagramAnalyzerTest {
 
         AnagramAnalyzer aa = new AnagramAnalyzer(dummyList);
         aa.analyze();
-        Map<Integer, List<String>> returnedOutput = aa.getAnagramMap();
+        Map<Integer, List<String>> returnedOutput = aa.getResult();
 
         assertEquals(expectedOutput, returnedOutput);
     }
@@ -42,26 +41,9 @@ public class AnagramAnalyzerTest {
         AnagramAnalyzer aa = new AnagramAnalyzer();
         aa.analyze();
 
-        assertNull(aa.getAnagramMap());
+        assertNull(aa.getResult());
     }
 
-    @Test
-    public void printDummyResult() throws UnsupportedEncodingException {
-        Map<Integer, List<String>> dummyMap = Map.of(Arrays.hashCode("eno".toCharArray()), Arrays.asList("one", "neo"),
-                Arrays.hashCode("eehrt".toCharArray()), Arrays.asList("three"), Arrays.hashCode("otw".toCharArray()), Arrays.asList("two"));
-        String expectedOutput = "one neo \n";
 
-        AnagramAnalyzer aa = new AnagramAnalyzer();
-        aa.setAnagramMap(dummyMap);
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try(PrintStream ps = new PrintStream(baos, true, StandardCharsets.UTF_8.name())){
-            aa.printResult(ps);
-        }
-        String returnedOutput = baos.toString(StandardCharsets.UTF_8.name());
-
-        assertEquals(expectedOutput, returnedOutput);
-
-    }
 
 }
