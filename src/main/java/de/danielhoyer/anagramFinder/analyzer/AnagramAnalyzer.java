@@ -11,23 +11,15 @@ import java.util.stream.Stream;
  * This class analyzes the given String-Stream and handles the operations for finding anagrams in the stream.
  */
 public class AnagramAnalyzer implements GeneralAnalyzer {
-    private final Stream<String> dataStream;
     private final List<String> dataList;
     private Map<Integer, List<String>> anagramMap;
 
-    public AnagramAnalyzer(Stream<String> dataStream) {
-        this.dataStream = dataStream;
-        this.dataList = null;
-    }
-
     public AnagramAnalyzer(List<String> dataList) {
         this.dataList = dataList;
-        this.dataStream = null;
     }
 
     public AnagramAnalyzer(){
         this.dataList = null;
-        this.dataStream = null;
     }
 
     /**
@@ -49,14 +41,6 @@ public class AnagramAnalyzer implements GeneralAnalyzer {
      */
     @Override
     public void analyze(){
-        if(dataStream != null) {
-            Map<Integer, List<String>> map = dataStream
-                    .collect(Collectors.groupingBy(AnagramAnalyzer::getHashcodeOfUnifiedAndSortedWord));
-            this.anagramMap = map;
-        }
-    }
-
-    public void analyzeList(){
         if(dataList != null) {
             Map<Integer, List<String>> map = dataList.stream().parallel()
                     .collect(Collectors.groupingByConcurrent(AnagramAnalyzer::getHashcodeOfUnifiedAndSortedWord));

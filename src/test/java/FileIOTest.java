@@ -12,19 +12,19 @@ public class FileIOTest {
     @Test
     public void getNullDataStreamWithNullLocation() throws IOException {
         GeneralIO fileIO = new FileIO(null);
-        assertNull(fileIO.getDataStream());
+        assertNull(fileIO.getDataList());
     }
 
     @Test
     public void getNullDataStreamWithEmptyLocation() throws IOException {
         GeneralIO fileIO = new FileIO("");
-        assertNull(fileIO.getDataStream());
+        assertNull(fileIO.getDataList());
     }
 
     @Test
     public void getNonExistentFile() {
         GeneralIO fileIO = new FileIO("test");
-        assertThrows(FileNotFoundException.class, () -> fileIO.getDataStream());
+        assertThrows(FileNotFoundException.class, () -> fileIO.getDataList());
     }
 
 }

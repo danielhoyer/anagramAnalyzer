@@ -23,14 +23,14 @@ public class Application {
         long readTime = 0;
         if(args != null && args.length > 0){
             String filePath = args[0];
-            try(FileIO fileIO = new FileIO(filePath)) {
+            try(GeneralIO fileIO = new FileIO(filePath)) {
                 List<String> dataStream = fileIO.getDataList();
                 readTime = System.currentTimeMillis();
                 System.out.printf("Reading time: %d ms\n", readTime - startTime);
-                AnagramAnalyzer anagramAnalyzer = new AnagramAnalyzer(dataStream);
-                anagramAnalyzer.analyzeList();
+                GeneralAnalyzer anagramAnalyzer = new AnagramAnalyzer(dataStream);
+                anagramAnalyzer.analyze();
                 endTime = System.currentTimeMillis();
-//                anagramAnalyzer.printResult(System.out);
+                anagramAnalyzer.printResult(System.out);
             } catch (IOException e) {
                 System.out.println("Error while getting data stream!");
             }

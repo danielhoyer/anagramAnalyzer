@@ -25,12 +25,12 @@ public class AnagramAnalyzerTest {
     }
 
     @Test
-    public void analyzeDummyStringStream() {
-        Stream<String> dummyStream = Stream.of("one", "two", "three", "neo");
+    public void analyzeDummyStringList() {
+        List<String> dummyList = Arrays.asList("one", "two", "three", "neo");
         Map<Integer, List<String>> expectedOutput = Map.of(Arrays.hashCode("eno".toCharArray()), Arrays.asList("one", "neo"),
                 Arrays.hashCode("eehrt".toCharArray()), Arrays.asList("three"), Arrays.hashCode("otw".toCharArray()), Arrays.asList("two"));
 
-        AnagramAnalyzer aa = new AnagramAnalyzer(dummyStream);
+        AnagramAnalyzer aa = new AnagramAnalyzer(dummyList);
         aa.analyze();
         Map<Integer, List<String>> returnedOutput = aa.getAnagramMap();
 
