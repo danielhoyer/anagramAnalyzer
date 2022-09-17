@@ -1,8 +1,8 @@
 # Anagram Analyzer
-## Daniel Hoyer
+### Daniel Hoyer
 
-# Build the application
+# Build and run the application
 - Clone this repository to your machine
-- run `mvn clean install` in the main directory of the project
-- run `java -jar /target/anagramFinder-1.0.jar <PATH_TO_FILE>` in the main directory of the project
-- the result is shown within the active terminal window
+- Run `mvn clean install` in the main directory of the project
+- Run `java -jar /target/anagramFinder-1.0.jar <PATH_TO_FILE>` in the main directory of the project
+- The result is shown within the active terminal window

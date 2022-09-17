@@ -34,6 +34,6 @@ public class Application {
             System.out.println("No filepath specified in command line arguments!");
         }
 
-        System.out.printf("Calculation time: %d", endTime - startTime);
+        System.out.printf("Calculation time: %d ms\n", endTime - startTime);
     }
 }
