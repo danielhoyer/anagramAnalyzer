@@ -39,7 +39,7 @@ public class AnagramAnalyzerTest {
 
     @Test
     public void analyzeNullString() {
-        AnagramAnalyzer aa = new AnagramAnalyzer(null);
+        AnagramAnalyzer aa = new AnagramAnalyzer();
         aa.analyze();
 
         assertNull(aa.getAnagramMap());
@@ -51,7 +51,7 @@ public class AnagramAnalyzerTest {
                 Arrays.hashCode("eehrt".toCharArray()), Arrays.asList("three"), Arrays.hashCode("otw".toCharArray()), Arrays.asList("two"));
         String expectedOutput = "one neo \n";
 
-        AnagramAnalyzer aa = new AnagramAnalyzer(null);
+        AnagramAnalyzer aa = new AnagramAnalyzer();
         aa.setAnagramMap(dummyMap);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

@@ -1,6 +1,7 @@
 package de.danielhoyer.anagramFinder.io;
 
 import java.io.*;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -30,6 +31,17 @@ public class FileIO implements GeneralIO {
             return null;
         }
     }
+
+    public List<String> getDataList() throws FileNotFoundException {
+        if(this.filePath != null && !this.filePath.isEmpty()) {
+            FileInputStream inputStream = new FileInputStream(this.filePath);
+            reader = new BufferedReader(new InputStreamReader(inputStream));
+            return reader.lines().toList();
+        } else {
+            return null;
+        }
+    }
+
 
     @Override
     public void close() throws IOException {

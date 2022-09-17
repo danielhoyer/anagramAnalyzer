@@ -6,6 +6,7 @@ import de.danielhoyer.anagramFinder.io.FileIO;
 import de.danielhoyer.anagramFinder.io.GeneralIO;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.stream.Stream;
 
 /**
@@ -19,14 +20,17 @@ public class Application {
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
         long endTime = 0;
+        long readTime = 0;
         if(args != null && args.length > 0){
             String filePath = args[0];
-            try(GeneralIO fileIO = new FileIO(filePath)) {
-                Stream<String> dataStream = fileIO.getDataStream();
-                GeneralAnalyzer anagramAnalyzer = new AnagramAnalyzer(dataStream);
-                anagramAnalyzer.analyze();
+            try(FileIO fileIO = new FileIO(filePath)) {
+                List<String> dataStream = fileIO.getDataList();
+                readTime = System.currentTimeMillis();
+                System.out.printf("Reading time: %d ms\n", readTime - startTime);
+                AnagramAnalyzer anagramAnalyzer = new AnagramAnalyzer(dataStream);
+                anagramAnalyzer.analyzeList();
                 endTime = System.currentTimeMillis();
-                anagramAnalyzer.printResult(System.out);
+//                anagramAnalyzer.printResult(System.out);
             } catch (IOException e) {
                 System.out.println("Error while getting data stream!");
             }
@@ -34,6 +38,6 @@ public class Application {
             System.out.println("No filepath specified in command line arguments!");
         }
 
-        System.out.printf("Calculation time: %d ms\n", endTime - startTime);
+        System.out.printf("Calculation time: %d ms\n", endTime - readTime);
     }
 }
