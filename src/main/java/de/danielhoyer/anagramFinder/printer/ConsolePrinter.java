@@ -5,9 +5,6 @@ import de.danielhoyer.anagramFinder.analyzer.GeneralAnalyzer;
 import de.danielhoyer.anagramFinder.io.GeneralIO;
 
 import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.util.List;
-import java.util.Map;
 
 /**
  * This class prints the results of the analyzation to the default console.
