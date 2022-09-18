@@ -32,7 +32,7 @@ public class AnagramAnalyzerTest {
 
         AnagramAnalyzer aa = new AnagramAnalyzer(dummyStream);
         aa.analyze();
-        Map<Integer, List<String>> returnedOutput = aa.getAnagramMap();
+        Map<Integer, List<String>> returnedOutput = aa.getResult();
 
         assertEquals(expectedOutput, returnedOutput);
     }
@@ -42,26 +42,7 @@ public class AnagramAnalyzerTest {
         AnagramAnalyzer aa = new AnagramAnalyzer(null);
         aa.analyze();
 
-        assertNull(aa.getAnagramMap());
-    }
-
-    @Test
-    public void printDummyResult() throws UnsupportedEncodingException {
-        Map<Integer, List<String>> dummyMap = Map.of(Arrays.hashCode("eno".toCharArray()), Arrays.asList("one", "neo"),
-                Arrays.hashCode("eehrt".toCharArray()), Arrays.asList("three"), Arrays.hashCode("otw".toCharArray()), Arrays.asList("two"));
-        String expectedOutput = "one neo \n";
-
-        AnagramAnalyzer aa = new AnagramAnalyzer(null);
-        aa.setAnagramMap(dummyMap);
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        try(PrintStream ps = new PrintStream(baos, true, StandardCharsets.UTF_8.name())){
-            aa.printResult(ps);
-        }
-        String returnedOutput = baos.toString(StandardCharsets.UTF_8.name());
-
-        assertEquals(expectedOutput, returnedOutput);
-
+        assertNull(aa.getResult());
     }
 
 }

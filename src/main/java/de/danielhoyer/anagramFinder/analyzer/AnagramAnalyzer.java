@@ -12,10 +12,14 @@ import java.util.stream.Stream;
  */
 public class AnagramAnalyzer implements GeneralAnalyzer {
     private final Stream<String> dataStream;
-    private Map<Integer, List<String>> anagramMap;
+    private Map<Integer, List<String>> result;
 
     public AnagramAnalyzer(Stream<String> dataStream) {
         this.dataStream = dataStream;
+    }
+
+    public AnagramAnalyzer(){
+        this.dataStream = null;
     }
 
     /**
@@ -40,32 +44,16 @@ public class AnagramAnalyzer implements GeneralAnalyzer {
         if(dataStream != null) {
             Map<Integer, List<String>> map = dataStream
                     .collect(Collectors.groupingBy(AnagramAnalyzer::getHashcodeOfUnifiedAndSortedWord));
-            this.anagramMap = map;
+            this.result = map;
         }
     }
 
-    /**
-     * Prints the results stored in anagramMap to the specified output.
-     * @param outPrintStream the specified output (PrintStream)
-     */
-    @Override
-    public void printResult(PrintStream outPrintStream){
-        anagramMap.forEach((key, value) -> {
-            if(value.size() > 1) {
-                value.forEach(v -> {
-                    outPrintStream.print(v);
-                    outPrintStream.print(" ");
-                });
-                outPrintStream.print("\n");
-            }
-        });
+
+    public Map<Integer, List<String>> getResult() {
+        return result;
     }
 
-    public Map<Integer, List<String>> getAnagramMap() {
-        return anagramMap;
-    }
-
-    public void setAnagramMap(Map<Integer, List<String>> anagramMap) {
-        this.anagramMap = anagramMap;
+    public void setResult(Map<Integer, List<String>> result) {
+        this.result = result;
     }
 }

@@ -4,6 +4,8 @@ import de.danielhoyer.anagramFinder.analyzer.AnagramAnalyzer;
 import de.danielhoyer.anagramFinder.analyzer.GeneralAnalyzer;
 import de.danielhoyer.anagramFinder.io.FileIO;
 import de.danielhoyer.anagramFinder.io.GeneralIO;
+import de.danielhoyer.anagramFinder.printer.ConsolePrinter;
+import de.danielhoyer.anagramFinder.printer.GeneralPrinter;
 
 import java.io.IOException;
 import java.util.stream.Stream;
@@ -26,7 +28,8 @@ public class Application {
                 GeneralAnalyzer anagramAnalyzer = new AnagramAnalyzer(dataStream);
                 anagramAnalyzer.analyze();
                 endTime = System.currentTimeMillis();
-                anagramAnalyzer.printResult(System.out);
+                GeneralPrinter printer = new ConsolePrinter(anagramAnalyzer);
+                printer.printResult();
             } catch (IOException e) {
                 System.out.println("Error while getting data stream!");
             }
